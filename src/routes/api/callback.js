@@ -7,7 +7,7 @@ const DISCORD_REDIRECT_URI = import.meta.env.VITE_DISCORD_REDIRECT_URI;
  */
 export async function get({ query }) {
   // fetch returnCode set in the URL parameters.
-  const returnCode = query.get('code');
+  const returnCode = query.url.searchParams.get('code');
   console.log('returnCode =>', returnCode);
 
   // initializing data object to be pushed to Discord's token endpoint.

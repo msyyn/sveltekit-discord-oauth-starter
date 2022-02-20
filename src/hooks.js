@@ -4,7 +4,7 @@ const HOST = import.meta.env.VITE_HOST;
 
 /** @type {import('@sveltejs/kit').GetSession} */
 export async function getSession(req) {
-  const cookies = cookie.parse(req.headers.cookie || '');
+  const cookies = cookie.parse(req.request.headers.get('cookie') || '');
 
   // if only refresh token is found, then access token has expired. perform a refresh on it.
   if (cookies.disco_refresh_token && !cookies.disco_access_token) {

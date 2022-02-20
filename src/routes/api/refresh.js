@@ -6,7 +6,7 @@ const DISCORD_REDIRECT_URI = import.meta.env.VITE_DISCORD_REDIRECT_URI;
  * @type {import('@sveltejs/kit').RequestHandler}
  */
 export async function get({query}) {
-  const disco_refresh_token = query.get('code');
+  const disco_refresh_token = query.url.searchParams.get('code');
   if (!disco_refresh_token) {
     return {
       body: JSON.stringify({error: 'No refresh token found'}),
